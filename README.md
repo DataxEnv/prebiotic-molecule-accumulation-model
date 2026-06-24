@@ -10,7 +10,7 @@ single-compartment linear ODE with constant production, linear decay, and a sinu
 **Version 2** (`prebiotic_model_v2.ipynb`) extends that foundation into a more physically and chemically realistic framework. It introduces nonlinear autocatalytic production, Arrhenius-based temperature-dependent degradation, UV photodegradation, wet-dry cycling, and a two-environment 
 comparison between a surface hydrothermal pond and a submarine hydrothermal vent system. 
 
-# Prebiotic Molecule Accumulation Model — Version 2
+# Prebiotic Molecule Accumulation Model: Version 2
 
 ## Scientific Background
 A central question in origin-of-life research is not simply whether the building blocks of life could have formed on the early Earth—experimental work has established that they could—but whether those molecules could have accumulated to concentrations high enough to matter chemically.
@@ -26,8 +26,6 @@ Two environments have dominated origin-of-life research as candidate settings fo
 This model compares the accumulation dynamics of a generalised prebiotic organic molecule under both regimes, using a system of ordinary differential equations (ODEs) that encode the key physical and chemical differences between them.
 
 ---
-
-# Computational Modeling Series
 ### Prebiotic Molecule Accumulation Model- v1
 
 This project uses a simple time-dependent computational model to explore how prebiotic organic molecules might accumulate in an open surface environment, such as a pond, on the early Earth.
