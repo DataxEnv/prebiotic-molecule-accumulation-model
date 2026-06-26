@@ -93,7 +93,7 @@ $$R_{\text{auto, dry}} = \frac{k_a [X]^2 \cdot (1 + \alpha\cdot \text{dry-phase}
 
 ### Loss Terms
 
-**Thermal degradation: $k_{\text{deg}}(T)$**
+**Thermal degradation: $k_{\text{deg}}(T)$** 
 
 Molecular destruction rate as a function of temperature, modelled using the Arrhenius equation:
 
@@ -141,13 +141,13 @@ All parameters are expressed in normalised concentration units and days. The pre
 | Activation energy | $E_a$ | $105,000 \text{ J/mol}$ | Hydrolytic breakdown of prebiotic nucleobases (Levy & Miller, 1998) |
 | Pre-exponential factor | $A$ | $8.64 \times 10^{14} \text{ day}^{-1}$ | Standard unimolecular degradation estimate, converted to day⁻¹ |
 | Pond temperature | $T_{\text{pond}}$ |  $303 \text{ K } (30^\circ\text{C})$ | Continental geothermal field baseline (Mulkidjanian et al., 2012) |
-| Pond UV rate | $k_{\text{UV\_pond}}$ | $0.04 \text{ day}^{-1}$ | Archean surface solar UV flux without ozone (Cnossen et al., 2007) |
-| Pond outflow | $k_{\text{out\_pond}}$ | $0.01 \text{ day}^{-1}$ | Semi-enclosed evaporative basin (Damer & Deamer, 2015) |
+| Pond UV rate | $k_{\text{UV pond}}$ | $0.04 \text{ day}^{-1}$ | Archean surface solar UV flux without ozone (Cnossen et al., 2007) |
+| Pond outflow | $k_{\text{out pond}}$ | $0.01 \text{ day}^{-1}$ | Semi-enclosed evaporative basin (Damer & Deamer, 2015) |
 | Dry-phase factor | $\alpha$ |  $2.5$ | Evaporative concentration factor (dimensionless) |
 | Cycling frequency | $\omega$ | $2\pi/10 \text{ day}^{-1}$ | Angular frequency for a 10-day wet-dry cycle (Damer & Deamer, 2015) |
 | Vent temperature |  $T_{\text{vent}}$ | $363 \text{ K } (90^\circ\text{C})$ | Core fluids of alkaline systems like Lost City (Kelley et al., 2005) |
-| Vent UV rate | $k_{\text{UV\_vent}}$ | $0.0 \text{ day}^{-1}$ | Complete UV shielding at depth |
-| Vent outflow |$k_{\text{out\_vent}}$ | $0.08 \text{ day}^{-1}$ | Open flow-through system (Martin & Russell, 2007) |
+| Vent UV rate | $k_{\text{UV vent}}$ | $0.0 \text{ day}^{-1}$ | Complete UV shielding at depth |
+| Vent outflow |$k_{\text{out vent}}$ | $0.08 \text{ day}^{-1}$ | Open flow-through system (Martin & Russell, 2007) |
 | Simulation duration | $t_{\text{end}}$ | $365 \text{ days}$ | One year. Sufficient to reach or approach steady state |
 | Initial condition | $[X]_0$ | $0.0 \text{ a.u.}$ | No prior accumulation assumed. Conservative baseline |
 
@@ -156,86 +156,39 @@ All parameters are expressed in normalised concentration units and days. The pre
 
 ### Figure 1 — Two-Environment Comparison
 
-![Two-Environment Comparison](two_environment_comparison.png)
+<img src="two_environment_comparison.png" width="800"/>
 
 **Surface Pond**
 
-The surface pond simulation produces a rapid early accumulation 
-that decelerates gradually into a stable plateau. Starting from 
-zero, [X] rises steeply through the first 50 days, driven by 
-the combined effect of environmental input and early autocatalytic 
-amplification. Growth slows as the system approaches the 
-autocatalytic saturation ceiling, stabilising at approximately 
-1.24 — well above the analytical steady state of 0.987.
+The surface pond simulation produces a rapid early accumulation that decelerates gradually into a stable plateau. Starting from zero, *[X]* rises steeply through the first 50 days, driven by the combined effect of environmental input and early autocatalytic 
+amplification. Growth slows as the system approaches the autocatalytic saturation ceiling, stabilising at approximately 
+1.24, well above the analytical steady state of 0.987.
 
-The plateau is sustained by the interplay between wet-dry cycling 
-and autocatalysis. During dry phases, outflow drops to zero and 
-evaporative concentration amplifies autocatalytic production. 
-During wet phases, fresh precursor input refreshes the system. 
-The result is a stable dynamic equilibrium that significantly 
-exceeds what linear chemistry alone predicts.
-This behaviour demonstrates that wet-dry cycling and
-autocatalytic production together generate accumulation that
-linear chemistry cannot predict and that the vent environment
-cannot achieve. It is consistent with the coupled-phase
-accumulation model proposed by Damer and Deamer (2015).
+The plateau is sustained by the interplay between wet-dry cycling and autocatalysis. During dry phases, outflow drops to zero and evaporative concentration amplifies autocatalytic production. During wet phases, fresh precursor input refreshes the system. The result is a stable dynamic equilibrium that significantly exceeds what linear chemistry alone predicts.
 
 **Hydrothermal Vent**
 
-The hydrothermal vent simulation reaches its analytical steady
-state of 0.067 within approximately five days and remains
-there for the entire 365-day simulation without deviation. The concentration ceiling is approximately 18 times lower than 
-the pond's peak accumulation.
+The hydrothermal vent simulation reaches its analytical steady state of 0.067 within approximately five days and remains
+there for the entire 365-day simulation without deviation. The concentration ceiling is approximately 18 times lower than the pond's peak accumulation.
 
-This result reflects the thermal trap inherent to
-high-temperature vent environments. At 90°C, the
-Arrhenius-computed k_deg alone exceeds both the baseline
-production rate (C₀ = 0.05 day⁻¹) and the maximum
-autocatalytic rate constant (k_a = 0.08 day⁻¹). Autocatalysis
-never meaningfully engages because [X] cannot reach the
-threshold concentration required for the nonlinear term to
-become significant. The vent reaches equilibrium between
-continuous production and continuous loss — and stays there.
+This result reflects the thermal degradation trap inherent to high-temperature vent environments. At 90°C, the Arrhenius-computed $k_{\text{deg}}$ alone exceeds both the baseline production rate ($C_0$ = 0.05 day⁻¹) and the maximum autocatalytic rate constant ($k_a$ = 0.08 day⁻¹). Autocatalysis never meaningfully engages because *[X]* cannot reach the threshold concentration required for the nonlinear term to become significant. The vent reaches equilibrium between continuous production and continuous loss, and stays there.
 
-The vent's continuous production and UV shielding provide real
-advantages not captured by this model. But under an
-accumulation-only framework, thermal degradation and rapid
-outflow together prevent the concentration buildup that
-autocatalytic chemistry requires.
+The vent's continuous production and UV shielding provide real advantages not captured by this model. But under an accumulation-only framework, thermal degradation and rapid outflow together prevent the concentration buildup that autocatalytic chemistry requires.
 
 ### Figure 2 — Sensitivity Analysis
 
-![Sensitivity Analysis](sensitivity_analysis.png)
+<img src="sensitivity_analysis.png" width="700"/>
 
 
-The heatmap shows steady-state concentration [X]* across a
-broad temperature and outflow parameter space, computed
-analytically without autocatalysis or cycling. Accumulation
-is maximised in the lower-left region — low temperatures and
-low outflow rates. The transition from high to low
-accumulation is steep along the temperature axis and more
-gradual along the outflow axis, indicating that temperature
-is the dominant control on steady-state concentration under
+The heatmap shows steady-state concentration *[X]* across a broad temperature and outflow parameter space, computed #analytically without autocatalysis or cycling. Accumulation is maximised in the lower-left region of the plot—low temperatures and low outflow rates. Moving right (higher temperature) or upward (higher outflow) reduces accumulation rapidly. The transition from high to low accumulation is steep along the temperature axis and more gradual along the outflow axis, indicating that temperature is the dominant control on steady-state concentration under
 these parameter choices.
 
-The two environment markers illustrate this directly. The
-pond marker sits within the mid-bright accumulation zone,
-consistent with the simulation result. The vent marker sits
-deep in the dark low-accumulation zone, far from any
-meaningful accumulation threshold.
+The two environment markers illustrate this directly. The pond marker sits within the mid-bright accumulation zone, consistent with the simulation result. The vent marker sits deep in the dark low-accumulation zone, far from any meaningful accumulation threshold.
 
-The black region in the upper-left corner represents
-parameter combinations where [X]* exceeds the colorbar cap
-of 2.0 — extreme low-temperature, low-outflow conditions
-beyond the range of either modelled environment.
+The white region in the upper-left corner represents parameter combinations where *[X]* exceeds the colorbar cap of 2.0— extreme low-temperature, low-outflow conditions beyond the range of either modelled environment.
 
-Together, the three panels — pond simulation, vent
-simulation, and sensitivity heatmap — support a consistent
-conclusion: accumulation of prebiotic organic molecules is
-strongly favoured by cool temperatures, physical containment,
-and periodic concentration events. The surface pond
-satisfies all three. The hydrothermal vent satisfies none
-under these parameter regimes.
+Together, the three panels: pond simulation, vent simulation, and sensitivity heatmap, support a consistent conclusion that accumulation of prebiotic organic molecules is strongly favoured by cool temperatures, physical containment, and periodic concentration events. The surface pond
+satisfies all three. The hydrothermal vent satisfies none under these parameter regimes.
 
 ## Limitations
 
@@ -271,10 +224,11 @@ under these parameter regimes.
    A single Ea is applied across all degradation pathways.
    In reality, different molecular species and bond types
    degrade at different rates under different temperatures.
-   **Dry-phase concentration factor.** During dry phases, the
+
+7. **Dry-phase concentration factor.** During dry phases, the
 concentration factor α amplifies the autocatalytic production
 term to reflect evaporative crowding of existing molecules.
-This is a simplification — physical evaporation would scale
+This is a simplification—physical evaporation would scale
 local concentration across all ODE terms simultaneously. A
 more rigorous implementation would define a time-dependent
 local concentration variable γ(t) = α during dry phases,
@@ -347,6 +301,7 @@ Russell, M.J. & Hall, A.J. (1997). The emergence of life
 from iron monosulphide bubbles at a submarine hydrothermal
 redox and pH front. *Journal of the Geological Society*,
 154(3), 377–402.
+
 ---
 ### Prebiotic Molecule Accumulation Model- v1
 
