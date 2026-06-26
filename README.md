@@ -128,6 +128,225 @@ $$[X]^* = \frac{C_0}{k_{\text{deg}}(T) + k_{\text{UV}} + k_{\text{out}}}$$
 
 This expression isolates the contribution of linear chemistry alone — production balanced against loss. It is plotted alongside the full simulation as a reference baseline, allowing direct visual assessment of how much autocatalysis and wet-dry cycling contribute to accumulation beyond what linear chemistry predicts.
 
+## Parameter Justification
+
+All parameters are expressed in normalised concentration units and days. The pre-exponential factor A is converted from s⁻¹ to day⁻¹ by multiplying by 86,400 (seconds per day) to ensure unit consistency across the simulation.
+
+| Parameter | Symbol | Value | Justification |
+|---|---|---|---|
+| Universal gas constant |  $R$ | $8.314 \text{ J/mol}\cdot\text{K}$ | Physical constant |
+| Baseline production | $C_0$ | $0.05 \text{ day}^{-1}$ | Normalised abiotic production rate |
+| Autocatalytic rate | $k_a$ | $0.08 \text{ day}^{-1}$ | Mathematical framework for autocatalytic sets (Kauffman, 1993) |
+| Saturation constant |$K_m$ | $5.0 \text{ a.u.}$ | Michaelis-Menten type half-saturation concentration |
+| Activation energy | $E_a$ | $105,000 \text{ J/mol}$ | Hydrolytic breakdown of prebiotic nucleobases (Levy & Miller, 1998) |
+| Pre-exponential factor | $A$ | $8.64 \times 10^{14} \text{ day}^{-1}$ | Standard unimolecular degradation estimate, converted to day⁻¹ |
+| Pond temperature | $T_{\text{pond}}$ |  $303 \text{ K } (30^\circ\text{C})$ | Continental geothermal field baseline (Mulkidjanian et al., 2012) |
+| Pond UV rate | $k_{\text{UV\_pond}}$ | $0.04 \text{ day}^{-1}$ | Archean surface solar UV flux without ozone (Cnossen et al., 2007) |
+| Pond outflow | $k_{\text{out\_pond}}$ | $0.01 \text{ day}^{-1}$ | Semi-enclosed evaporative basin (Damer & Deamer, 2015) |
+| Dry-phase factor | $\alpha$ |  $2.5$ | Evaporative concentration factor (dimensionless) |
+| Cycling frequency | $\omega$ | $2\pi/10 \text{ day}^{-1}$ | Angular frequency for a 10-day wet-dry cycle (Damer & Deamer, 2015) |
+| Vent temperature |  $T_{\text{vent}}$ | $363 \text{ K } (90^\circ\text{C})$ | Core fluids of alkaline systems like Lost City (Kelley et al., 2005) |
+| Vent UV rate | $k_{\text{UV\_vent}}$ | $0.0 \text{ day}^{-1}$ | Complete UV shielding at depth |
+| Vent outflow |$k_{\text{out\_vent}}$ | $0.08 \text{ day}^{-1}$ | Open flow-through system (Martin & Russell, 2007) |
+| Simulation duration | $t_{\text{end}}$ | $365 \text{ days}$ | One year. Sufficient to reach or approach steady state |
+| Initial condition | $[X]_0$ | $0.0 \text{ a.u.}$ | No prior accumulation assumed. Conservative baseline |
+
+
+## Results and Interpretation
+
+### Figure 1 — Two-Environment Comparison
+
+![Two-Environment Comparison](two_environment_comparison.png)
+
+**Surface Pond**
+
+The surface pond simulation produces a rapid early accumulation 
+that decelerates gradually into a stable plateau. Starting from 
+zero, [X] rises steeply through the first 50 days, driven by 
+the combined effect of environmental input and early autocatalytic 
+amplification. Growth slows as the system approaches the 
+autocatalytic saturation ceiling, stabilising at approximately 
+1.24 — well above the analytical steady state of 0.987.
+
+The plateau is sustained by the interplay between wet-dry cycling 
+and autocatalysis. During dry phases, outflow drops to zero and 
+evaporative concentration amplifies autocatalytic production. 
+During wet phases, fresh precursor input refreshes the system. 
+The result is a stable dynamic equilibrium that significantly 
+exceeds what linear chemistry alone predicts.
+This behaviour demonstrates that wet-dry cycling and
+autocatalytic production together generate accumulation that
+linear chemistry cannot predict and that the vent environment
+cannot achieve. It is consistent with the coupled-phase
+accumulation model proposed by Damer and Deamer (2015).
+
+**Hydrothermal Vent**
+
+The hydrothermal vent simulation reaches its analytical steady
+state of 0.067 within approximately five days and remains
+there for the entire 365-day simulation without deviation. The concentration ceiling is approximately 18 times lower than 
+the pond's peak accumulation.
+
+This result reflects the thermal trap inherent to
+high-temperature vent environments. At 90°C, the
+Arrhenius-computed k_deg alone exceeds both the baseline
+production rate (C₀ = 0.05 day⁻¹) and the maximum
+autocatalytic rate constant (k_a = 0.08 day⁻¹). Autocatalysis
+never meaningfully engages because [X] cannot reach the
+threshold concentration required for the nonlinear term to
+become significant. The vent reaches equilibrium between
+continuous production and continuous loss — and stays there.
+
+The vent's continuous production and UV shielding provide real
+advantages not captured by this model. But under an
+accumulation-only framework, thermal degradation and rapid
+outflow together prevent the concentration buildup that
+autocatalytic chemistry requires.
+
+### Figure 2 — Sensitivity Analysis
+
+![Sensitivity Analysis](sensitivity_analysis.png)
+
+
+The heatmap shows steady-state concentration [X]* across a
+broad temperature and outflow parameter space, computed
+analytically without autocatalysis or cycling. Accumulation
+is maximised in the lower-left region — low temperatures and
+low outflow rates. The transition from high to low
+accumulation is steep along the temperature axis and more
+gradual along the outflow axis, indicating that temperature
+is the dominant control on steady-state concentration under
+these parameter choices.
+
+The two environment markers illustrate this directly. The
+pond marker sits within the mid-bright accumulation zone,
+consistent with the simulation result. The vent marker sits
+deep in the dark low-accumulation zone, far from any
+meaningful accumulation threshold.
+
+The black region in the upper-left corner represents
+parameter combinations where [X]* exceeds the colorbar cap
+of 2.0 — extreme low-temperature, low-outflow conditions
+beyond the range of either modelled environment.
+
+Together, the three panels — pond simulation, vent
+simulation, and sensitivity heatmap — support a consistent
+conclusion: accumulation of prebiotic organic molecules is
+strongly favoured by cool temperatures, physical containment,
+and periodic concentration events. The surface pond
+satisfies all three. The hydrothermal vent satisfies none
+under these parameter regimes.
+
+## Limitations
+
+1. **Well-mixed compartments.** Each environment is modelled
+   as a single spatially homogeneous box. Spatial gradients
+   within environments — such as temperature and pH gradients
+   across a vent pore wall — are not captured.
+
+2. **Single-species proxy.** [X] represents a generalised
+   prebiotic organic molecule rather than a specific chemical
+   species. Degradation kinetics are represented by a single
+   average activation energy. In reality, different molecular
+   species degrade at different rates under different
+   conditions.
+
+3. **Abundant precursors assumed.** Raw chemical feedstocks
+   are assumed to be non-limiting and constant. This isolates
+   accumulation dynamics from upstream supply constraints but
+   does not reflect environments where precursor availability
+   is itself a limiting factor.
+
+4. **No exchange between environments.** The pond and vent
+   are modelled as independent systems. Material transport
+   between surface and subsurface environments is not
+   included.
+
+5. **Idealised wet-dry cycling.** The pond's wet-dry cycling
+   is represented as a square wave with a fixed 10-day
+   period. Real Hadean cycling would have been irregular and
+   climate-dependent.
+
+6. **Arrhenius degradation uses fixed activation energy.**
+   A single Ea is applied across all degradation pathways.
+   In reality, different molecular species and bond types
+   degrade at different rates under different temperatures.
+   **Dry-phase concentration factor.** During dry phases, the
+concentration factor α amplifies the autocatalytic production
+term to reflect evaporative crowding of existing molecules.
+This is a simplification — physical evaporation would scale
+local concentration across all ODE terms simultaneously. A
+more rigorous implementation would define a time-dependent
+local concentration variable γ(t) = α during dry phases,
+applied globally. This is noted as a direction for future
+refinement.
+
+8. **Sensitivity analysis is two-dimensional.** Temperature
+   and outflow are varied simultaneously, but UV
+   degradation rate, autocatalytic parameters, and
+   production rate are held fixed. A fuller sensitivity
+   analysis would explore the full parameter space.
+
+9. **Accumulation-only framework.** The model does not
+   capture redox chemistry, mineral catalysis, or reaction
+   network complexity — all of which are genuine advantages
+   of hydrothermal vent environments not represented here.
+
+## References
+
+Bada, J.L. & Lazcano, A. (2002). Some like it hot, but not
+the first biomolecules. *Science*, 296(5575), 1982–1983.
+
+Cnossen, I. et al. (2007). Habitat of early life: Solar
+X-ray and UV radiation at Earth's surface 4–3.5 billion
+years ago. *Journal of Geophysical Research*, 112, E02008.
+
+Damer, B. & Deamer, D. (2015). Coupled phases and
+combinatorial selection in fluctuating hydrothermal pools:
+A scenario to guide experimental approaches to the origin
+of cellular life. *Life*, 5(1), 872–887.
+
+Hordijk, W. & Steel, M. (2004). Detecting autocatalytic,
+self-sustaining sets in chemical reaction systems. *Journal
+of Theoretical Biology*, 227(4), 451–461.
+
+Kauffman, S.A. (1993). *The Origins of Order:
+Self-Organization and Selection in Evolution.* Oxford
+University Press.
+
+Kelley, D.S. et al. (2005). A serpentinite-hosted
+ecosystem: The Lost City hydrothermal field. *Science*,
+307(5714), 1428–1434.
+
+Lane, N. & Martin, W.F. (2012). The origin of membrane
+bioenergetics. *Cell*, 151(7), 1406–1416.
+
+Levy, M. & Miller, S.L. (1998). The stability of the RNA
+bases: Implications for the origin of life. *PNAS*,
+95(14), 7933–7938.
+
+Martin, W. & Russell, M.J. (2007). On the origin of
+biochemistry at an alkaline hydrothermal vent.
+*Philosophical Transactions of the Royal Society B*,
+362(1486), 1887–1926.
+
+Miller, S.L. (1953). A production of amino acids under
+possible primitive Earth conditions. *Science*, 117(3046),
+591–592.
+
+Mulkidjanian, A.Y. et al. (2012). Origin of first cells
+at terrestrial, anoxic geothermal fields. *PNAS*, 109(14),
+E821–E830.
+
+Powner, M.W., Gerland, B. & Sutherland, J.D. (2009).
+Synthesis of activated pyrimidine ribonucleotides in
+prebiotically plausible conditions. *Nature*, 459,
+239–242.
+
+Russell, M.J. & Hall, A.J. (1997). The emergence of life
+from iron monosulphide bubbles at a submarine hydrothermal
+redox and pH front. *Journal of the Geological Society*,
+154(3), 377–402.
 ---
 ### Prebiotic Molecule Accumulation Model- v1
 
