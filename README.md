@@ -70,23 +70,26 @@ The right-hand side contains two production terms and three loss terms. Each ter
 Represents abiotic production of *[X]* from environmental chemistry.
 
 - Hydrothermal vent: constant continuous influx
+
 $$P_{\text{env}}(t) = C_0$$
 
 - Surface pond: pulsed input following a square wave that alternates between wet phase (baseline delivery) and dry phase (delivery stops, evaporation concentrates existing molecules)
+
 $$\text{wet-phase} = \frac{\text{square}(\omega t) + 1}{2}$$
+
 $$P_{\text{env}}(t) = C_0 \cdot \text{wet-phase}$$
 
 The square wave is mapped to oscillate between 1 (wet) and 0 (dry) rather than between +1 and -1, preventing physically impossible negative production rates.
 
 **Autocatalytic production: $R_{\text{auto}}([X])$**
 
-Represents the ability of existing molecules to catalyse their own synthesis — a central concept in prebiotic chemistry (Kauffman, 1993). A saturating nonlinear term is used to prevent unbounded growth:
+Represents the ability of existing molecules to catalyse their own synthesis, a central concept in prebiotic chemistry (Kauffman, 1993). A saturating nonlinear term is used to prevent unbounded growth:
 
 $$R_{\text{auto}} = \frac{k_a [X]^2}{1 + K_m [X]^2}$$
 
 The [X]² term reflects the requirement for two molecules to interact during autocatalytic replication; one acting as template, one as substrate. This produces sigmoidal (S-shaped) growth: slow at low concentrations, accelerating through a threshold, then saturating as K_m limits the ceiling. During dry phases in the pond, the concentration factor $\alpha$ amplifies autocatalysis to reflect evaporative crowding of existing molecules:
 
-$$R_{\text{auto,dry}} = \frac{k_a [X]^2 \cdot (1 + \alpha\cdot \text{dry-phase})}{1 + K_m [X]^2}$$
+$$R_{\text{auto, dry}} = \frac{k_a [X]^2 \cdot (1 + \alpha\cdot \text{dry-phase})}{1 + K_m [X]^2}$$
 
 ### Loss Terms
 
@@ -110,7 +113,7 @@ A fixed degradation constant representing destruction by ultraviolet radiation. 
 - Surface pond: k_UV = 0.04 day⁻¹ - continuous UV exposure
 - Hydrothermal vent: k_UV = 0.0 - completely shielded by the overlying ocean water column
 
-**Advection and outflow — $k_{\text{out}}$**
+**Advection and outflow: $k_{\text{out}}$**
 
 Represents physical loss through dilution and flushing:
 
