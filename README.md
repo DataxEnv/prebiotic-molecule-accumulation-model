@@ -189,7 +189,7 @@ these parameter choices.
 The two environment markers illustrate this directly. The pond marker sits within the mid-bright accumulation zone, consistent with the simulation result. The vent marker sits deep in the dark low-accumulation zone, far from any meaningful accumulation threshold.
 
 The white region spanning 0°C to 20°C in the lower-left corner indicates where steady-state accumulation \([X]^*\) exceeds the colorbar ceiling of 2.0 a.u. — extreme low-temperature, low-outflow conditions where thermal degradation is near zero and molecules accumulate without bound 
-in the linear model. These conditions are mathematically predicted but physically unrealistic for early Earth. In actual geochemical environments below 20°C, the forward activation energy barriers for prebiotic synthesis (\(C_{0}\)) and autocatalytic pathways (\(k_{a}\)) would severely reduce production rates, preventing such extreme concentrations. This is acknowledged as a model limitation.
+in the linear model. These conditions are mathematically predicted but physically unrealistic for early Earth. In actual geochemical environments below 20°C, the forward activation energy barriers for prebiotic synthesis ($C_0$) and autocatalytic pathways ($k_a$)) would severely reduce production rates, preventing such extreme concentrations. This is acknowledged as a model limitation.
 
 Together, the three panels: pond simulation, vent simulation, and sensitivity heatmap, support a consistent conclusion that accumulation of prebiotic organic molecules is strongly favoured by cool temperatures, physical containment, and periodic concentration events. The surface pond
 satisfies all three. The hydrothermal vent satisfies none under these parameter regimes.
