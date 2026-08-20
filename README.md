@@ -5,7 +5,7 @@
 This repository contains two versions of a dynamical systems model tracking the accumulation of prebiotic organic molecules on the early Earth.
 
 **Version 1** (`prebiotic_molecule_accumulation_model.ipynb`) was developed as a introductory computational exploration. It implements a 
-single-compartment linear ODE with constant production, linear decay, and a sinusoidal environmental input term. That model established the basic result: periodic environmental input and loss rate are the key determinants of whether molecules accumulate at all.
+single-compartment linear ODE with constant production, linear decay, and a sinusoidal environmental input term. The model established that periodic environmental input and loss rate are the key determinants of whether molecules accumulate at all.
 
 **Version 2** (`prebiotic_model_v2.ipynb`) extends that foundation into a more physically and chemically realistic framework. It introduces nonlinear autocatalytic production, Arrhenius-based temperature-dependent degradation, UV photodegradation, wet-dry cycling, and a two-environment 
 comparison between a surface hydrothermal pond and a submarine hydrothermal vent system. 
@@ -18,15 +18,15 @@ comparison between a surface hydrothermal pond and a submarine hydrothermal vent
 
 ### The Accumulation Problem
 
-Experimental work has established that the building blocks of life—amino acids, nucleotide precursors, sugars, and lipids—can form abiotically under early Earth conditions. Stanley Miller demonstrated this in 1953, producing amino acids within days by sparking electricity through a simulated early atmosphere (Miller, 1953). John Sutherland and colleagues later showed that RNA nucleotide precursors could form under plausible prebiotic conditions through an alternative synthetic pathway (Powner et al., 2009).
+Experimental work has established that the building blocks of life—amino acids, nucleotide precursors, sugars, and lipids—can form abiotically under early Earth conditions. Stanley Miller demonstrated this in 1953, producing amino acids within days by sparking electricity through a simulated early atmosphere (Miller, 1953). Decades later, John Sutherland and colleagues showed that RNA nucleotide precursors could form under plausible prebiotic conditions through an alternative synthetic pathway (Powner _et al_., 2009).
 
-But formation is not accumulation. Prebiotic organic molecules face simultaneous competing pressures: they are produced by abiotic chemistry, but they are also destroyed by thermal degradation, photodegradation by ultraviolet radiation, and physical dilution into the surrounding environment. Whether a molecule persists long enough to participate in further chemistry depends entirely on the balance between these processes, and that balance is strongly environment-dependent.
+However, formation is not accumulation. Prebiotic organic molecules are produced by abiotic chemistry, but they are also destroyed by thermal degradation, photodegradation by ultraviolet radiation, and physical dilution into the surrounding environment. Whether a molecule persists long enough to participate in further chemistry depends entirely on the balance between these processes, and that balance is strongly environment-dependent. This is the accumulation problem.
 
-This is the accumulation problem: Whether the abundant prebiotic molecule they can reach and sustain concentrations high enough to matter chemically. It is a necessary precondition for any origin-of-life scenario. A molecule that forms and immediately degrades contributes nothing to prebiotic chemistry regardless of how efficiently it was synthesised.
+To matter chemically, prebiotic molecules must reach and sustain high concentrations. It is a necessary precondition for the origin of life. A molecule that forms and immediately degrades contributes nothing to prebiotic chemistry regardless of how efficiently it was synthesised.
 
 Two environments have dominated origin-of-life research as candidate settings for early prebiotic chemistry:
 
-- **Surface hydrothermal ponds:** shallow, geothermally heated pools subject to wet-dry cycling driven by evaporation and rainfall. First proposed by Darwin (1871) as a "warm little pond" and as a plausible setting for life's origin. The hypothesis was formalised computationally by Mulkidjanian et al. (2012), who identified geothermal fields as geochemically favourable environments for prebiotic synthesis, and developed experimentally by Damer and Deamer (2015), who proposed that wet-dry cycling drives combinatorial selection and concentration of organic polymers. The pond's key advantage is physical containment: molecules are retained in a semi-enclosed environment, concentrated by evaporation during dry phases, and periodically refreshed by rainfall during wet phases.
+- **Surface hydrothermal ponds:** shallow, geothermally heated pools subject to wet-dry cycling driven by evaporation and rainfall. First proposed by Darwin (1871) as a "warm little pond" and as a plausible setting for life's origin. The hypothesis was formalised computationally by Mulkidjanian _et al_. (2012), who identified geothermal fields as geochemically favourable environments for prebiotic synthesis, and developed experimentally by Damer and Deamer (2015), who proposed that wet-dry cycling drives combinatorial selection and concentration of organic polymers. The pond's key advantage is physical containment: molecules are retained in a semi-enclosed environment, concentrated by evaporation during dry phases, and periodically refreshed by rainfall during wet phases.
 
 - **Submarine hydrothermal vents:** continuous, mineral-rich fluid systems on the deep ocean floor, shielded from UV radiation and driven by serpentinization reactions. Proposed as a prebiotic setting by Russell and Hall (1997) and developed theoretically by Lane and Martin (2012), who argued that the proton gradients across alkaline vent pore walls provide a direct analogue to the chemiosmotic energy systems of modern cells. The vent's key advantage is sustained energy: continuous fluid flow delivers chemical energy and mineral catalysts indefinitely, shielded
 from UV radiation by the overlying ocean water column.
@@ -41,7 +41,7 @@ Version 2 models the concentration of a generalised prebiotic organic molecule *
 The central scientific question is: under which environmental regime do organic molecules accumulate to concentrations
 sufficient to sustain chemistry, and why?
 
-The model is not a *reaction-specific* chemical simulation. *[X]* is a generalised proxy for prebiotic organic polymers: proto-RNA strands, peptides, or nucleotide precursors, rather than a specific molecular species. This abstraction allows the model to focus on accumulation dynamics rather than species-specific reaction pathways, consistent with published dynamical models of prebiotic chemistry (Kauffman, 1993; Hordijk & Steel, 2004).
+The model is not a *reaction-specific* chemical simulation. *[X]* is a generalised substitute for prebiotic organic polymers: proto-RNA strands, peptides, or nucleotide precursors, rather than a specific molecular species. This abstraction allows the model to focus on accumulation dynamics rather than species-specific reaction pathways, consistent with published dynamical models of prebiotic chemistry (Kauffman, 1993; Hordijk & Steel, 2004).
 
 ### Key Upgrades from Version 1
 
